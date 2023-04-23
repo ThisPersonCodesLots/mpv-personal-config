@@ -1,4 +1,3 @@
-
 import vapoursynth as vs
 core = vs.core
 clip = video_in.resize.Bicubic(format=vs.YUV420P8)
