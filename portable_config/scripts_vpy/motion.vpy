@@ -1,9 +1,4 @@
-```
-Script by @maoiscat (https://github.com/maoiscat/mpv-mvtools-script)
-This script is not mine, I just added the ability to use it with 60 fps videos, not current display refresh rate.
-Eg. Video recorded at 24 fps and 144 hz monitor. Script adjust frame rate video from 24 fps to 60 fps.
-That's my 2 cents.
-```
+
 import vapoursynth as vs
 core = vs.core
 clip = video_in.resize.Bicubic(format=vs.YUV420P8)
