@@ -7,6 +7,5 @@
 
 - After some test cases I conclude that vapoursynth had no real motion interpolation.
 Yeah, it does a small improvement but you can't tell the difference from 24 fps to 48/72/120 and so on.
-- I recommend you to use Flowframes [1] and taking your time to use it properly. RISE it's more advanced than DAIN/Vapour!
+- I recommend you to use Flowframes (https://nmkd.itch.io/flowframes) and taking your time to use it properly. RISE it's more advanced than DAIN/Vapour!
 - If you are lucky and got RTX GPU, ~24min -> 10-25 min of processing from 24 fps to 48 fps. And WORTH IT.
-[1] https://nmkd.itch.io/flowframes
