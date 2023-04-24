@@ -13,7 +13,7 @@ clip = video_in.resize.Bicubic(format=vs.YUV420P8)
 vden = 1000
 vfps = container_fps*vden
 # change frame to your prefered frame rate or display refresh rate
-frame = 48
+frame = 72
 dfps = frame*vden
 if container_fps < frame:
     clip = core.std.AssumeFPS(clip, fpsnum=vfps, fpsden=vden)
