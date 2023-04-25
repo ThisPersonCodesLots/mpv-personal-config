@@ -5,6 +5,7 @@
 - Please modify the file to your needs and not blindly copy-paste!
 - Take your time and read comments!
 - Still updating this!
+- I tried to make it as simple as possible, using only the necessary features and for low end PCs. (AMD Ryzen 7 4800HS, nVidia GTX 1650 mobile, 2k monitor, +120hz)
 
 ### input.conf
 - SWIFT+a - change subtitles font
@@ -28,8 +29,12 @@ Yeah, it does a small improvement but you can't tell the difference from 24 fps 
 
 ### Shaders:
 
-- TBA: HDR support!
-
+- TBA: HDR support! (mpv default seems to be weird sometimes).
+- Shaders tested on +480p videos, using a 2k monitor, +120 hz.
 - After some research and custom configuration of shaders, I found that the best shaders for me are:
     - [Upscale+Sharpen+Thin+Dark](https://github.com/vioo-bkp/mpv-personal-config/tree/main/portable_config/shaders/safe)
-    - [Upscale+Sharpen+Thin]()
+    - Upscale+Sharpen+Thin
+- I recommend you to use the shaders that are in the folder "safe" and test them one by one, to see which one is the best for you. (I'm still testing them, so I can't tell you which one is the best for you).
+
+#### Disclaimer: 
+- I'm not a professional, I just like to watch anime and movies with a better quality. I'm still learning about shaders and how to use them properly. If you have any suggestions, please let me know!
