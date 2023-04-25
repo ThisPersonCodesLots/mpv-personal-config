@@ -25,3 +25,11 @@ Yeah, it does a small improvement but you can't tell the difference from 24 fps 
 - I recommend you to use Flowframes ( https://nmkd.itch.io/flowframes ) and take your time to use it properly. RIFE it's more advanced than DAIN/Vapour!
 
 - If you are lucky and got RTX GPU, ~24min -> 10-25 min of processing from 24 fps to 72/120 fps. And WORTH IT.
+
+### Shaders:
+
+- TBA: HDR support!
+
+- After some research and custom configuration of shaders, I found that the best shaders for me are:
+    - [Upscale+Sharpen+Thin+Dark](https://github.com/vioo-bkp/mpv-personal-config/tree/main/portable_config/shaders/safe)
+    - [Upscale+Sharpen+Thin]()
