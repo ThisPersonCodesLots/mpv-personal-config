@@ -1,5 +1,8 @@
 # mpv.conf
 
+## ***ISSUE***
+- Using vapoursynth + shaders cause losing frames. (I'm still trying to fix it)
+
 ## INFO
 
 - Please modify the file to your needs and not blindly copy-paste!
