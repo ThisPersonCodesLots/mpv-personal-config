@@ -10,6 +10,10 @@
 - Still updating this!
 - I tried to make it as simple as possible, using only the necessary features and for low end PCs. (AMD Ryzen 7 4800HS, nVidia GTX 1650 mobile, 2k monitor, +120hz)
 
+## ***WIKI***
+- [iamscum](https://iamscum.wordpress.com/guides/videoplayback-guide/mpv-conf/)
+- [mpv manual](https://mpv.io/manual/master/)
+
 ### input.conf
 - SWIFT+a - change subtitles font
 - ESC - exit MPV and save current timeline
