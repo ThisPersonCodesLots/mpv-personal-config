@@ -15,12 +15,9 @@ vfps = container_fps*vden
 # change frame to your prefered frame rate or display refresh rate
 frame = 59
 dfps = frame*vden
-if container_fps < frame:
-    clip = core.std.AssumeFPS(clip, fpsnum=vfps, fpsden=vden)
-    super = core.mv.Super(clip, pel=2, sharp=0, rfilter=2)
-    mvfw = core.mv.Analyse(super, blksize=32, isb=False, search=3, dct=5)
-    mvbw = core.mv.Analyse(super, blksize=32, isb=True,  search=3, dct=5)
-    clip = core.mv.FlowFPS(clip, super, mvbw, mvfw, num=dfps, den=vden, mask=1)
-    clip.set_output()
-else:
-    clip.set_output()
+clip = core.std.AssumeFPS(clip, fpsnum=vfps, fpsden=vden)
+super = core.mv.Super(clip, pel=2, sharp=0, rfilter=2)
+mvfw = core.mv.Analyse(super, blksize=32, isb=False, search=3, dct=5)
+mvbw = core.mv.Analyse(super, blksize=32, isb=True,  search=3, dct=5)
+clip = core.mv.FlowFPS(clip, super, mvbw, mvfw, num=dfps, den=vden, mask=1)
+clip.set_output()
