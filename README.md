@@ -1,15 +1,13 @@
-# mpv.conf
-
-## ***ISSUE***
-
-- Using vapoursynth + shaders cause losing frames. (I'm still trying to fix it).
-- TBA: HDR support! (mpv default seems to be weird sometimes. Eg. OLED TV).
-
 ## INFO
 
 - Please modify the file to your needs and not blindly copy-paste!
 - Take your time and read comments!
 - I tried to make it as simple as possible, using only the necessary features and for low end PCs. (AMD Ryzen 7 4800HS, nVidia GTX 1650 mobile, 2k monitor, +120hz)
+
+## ***ISSUE***
+
+- Using vapoursynth + shaders cause losing frames. (I'm still trying to fix it).
+- TBA: HDR support! (mpv default seems to be weird sometimes. Eg. OLED TV).
 
 ## ***WIKI*** + ***Resources***
 
@@ -42,9 +40,11 @@
 ### Shaders:
 
 - Shaders tested on +480p videos, using a 2k monitor, +120 hz.
-- After some research and custom configuration of shaders, I found that the best shaders for me are:
+- After some research and custom configuration of shaders, I found that the best shaders for me are
     - [Upscale+Sharpen+Thin+Dark](https://github.com/vioo-bkp/mpv-personal-config/tree/main/portable_config/shaders/safe)
+
 - I recommend you to use the shaders that are in the folder "safe" and test them one by one, to see which one is the best for you. (I'm still testing them, so I can't tell you which one is the best for you).
+- Use the shaders that are in the folder "unsafe" only if you have a good GPU and CPU. [Anime4K](https://www.reddit.com/r/animepiracy/comments/spbyhu/evaluating_the_effectiveness_of_anime4k_for/) it's a bad idea to use it.
 
 #### Disclaimer:
 
