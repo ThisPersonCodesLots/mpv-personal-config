@@ -2,7 +2,7 @@
 
 - Please modify the file to your needs and not blindly copy-paste!
 - Take your time and read comments!
-- I tried to make it as simple as possible, using only the necessary features and for low end PCs. (AMD Ryzen 7 4800HS, nVidia GTX 1650 mobile, 2k monitor, +120hz)
+- I tried to make it as simple as possible, using only the necessary features and for low end PCs. (_25W Max Power Usage_, AMD Ryzen 7 4800HS, nVidia GTX 1650 mobile, 2k monitor, +120hz)
 
 ## ***ISSUE***
 
