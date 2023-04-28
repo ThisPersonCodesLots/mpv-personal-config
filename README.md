@@ -49,3 +49,5 @@
 #### Disclaimer:
 
 - I'm not a professional, I just like to watch anime and movies with a better quality. I'm still learning about shaders and how to use them properly. If you have any suggestions, please let me know!
+
+- [MAL link](https://myanimelist.net/profile/kuwapt)
