@@ -4,8 +4,6 @@ Tips: try using multiple of x when it's come to frame. (24 x 2 = 48, 24 x 3 = 72
 Adjust "frame" variable to your prefered frame rate or display refresh rate.
 """
 
-
-
 import vapoursynth as vs
 
 core = vs.core
