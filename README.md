@@ -15,6 +15,7 @@
 - [iamscum](https://iamscum.wordpress.com/guides/videoplayback-guide/mpv-conf/)
 - [mpv_lazy](https://github.com/hooke007/MPV_lazy)
 - [maoiscat](https://github.com/maoiscat/mpv-mvtools-script)
+- [interpolation_test](https://github.com/haasn/interpolation-samples)
 
 ### input.conf
 
