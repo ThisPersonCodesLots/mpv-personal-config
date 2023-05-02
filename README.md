@@ -6,7 +6,7 @@
 
 ## ***ISSUE***
 
-- FIX: ~Using vapoursynth + shaders cause losing frames. (I'm still trying to fix it).~
+- FIX: ~Using vapoursynth + shaders cause losing frames.~
 - TBA: HDR support! (mpv default seems to be weird sometimes. Eg. OLED TV).
 
 ## ***WIKI*** + ***Resources***
@@ -19,7 +19,7 @@
 
 ### input.conf
 
-- SWIFT+a - change subtitles font
+- SWIFT+s - change subtitles font
 - ESC - exit MPV and save current timeline
 - CTRL+NUM - active shaders
 
