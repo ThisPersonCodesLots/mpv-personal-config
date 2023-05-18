@@ -27,6 +27,7 @@
 
 ### mpv.conf
 - TBA
+- Vapoursynth as toggle option. (Can cause losing frames when toggle on/off, just skip 1-2 seconds and it's fine)
 
 ### Interpolation:
 
