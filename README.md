@@ -7,6 +7,7 @@
 ## ***ISSUE***
 
 - Fixed: ~Using vapoursynth + shaders cause losing frames.~
+- Fixed: ~Use vapoursynth as toggle option.~
 - TBA: HDR support! (mpv default seems to be weird sometimes. Eg. OLED TV).
 
 ## ***WIKI*** + ***Resources***
