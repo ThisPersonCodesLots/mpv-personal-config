@@ -3,12 +3,14 @@
 - Please modify the file to your needs and not blindly copy-paste!
 - Take your time and read comments!
 - I tried to make it as simple as possible, using only the necessary features and for low end PCs. (_20W Max Power Usage_, AMD Ryzen 7 4800HS, nVidia GTX 1650 mobile, 2k monitor, +120hz)
+- Make sure you have Vapoursynth and MVtools installed as portable files and/or they are in path system.
 
-## ***ISSUE***
+## ***ISSUE*** + ***TODO***
 
 - Fixed: ~Using vapoursynth + shaders cause losing frames.~
 - Fixed: ~Unresponsive vapoursynth as toggle option.~
 - TBA: HDR support! (mpv default seems to be weird sometimes. Eg. OLED TV).
+- Playlist integrated in UI.
 
 ## ***WIKI*** + ***Resources***
 
@@ -24,6 +26,7 @@
 - SWIFT+s - change subtitles font
 - ESC - exit MPV and save current timeline
 - CTRL+NUM - active shaders
+- CTRL+M - motion interpolation on/off
 
 ### mpv.conf
 - TBA
