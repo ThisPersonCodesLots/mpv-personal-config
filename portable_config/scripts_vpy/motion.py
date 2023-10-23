@@ -3,6 +3,10 @@
 # Adjust "frame" variable to your prefered frame rate or display refresh rate.
 # """
 
+##
+### FLOW FPS version ###
+##
+
 # import vapoursynth as vs
 
 # core = vs.core
@@ -31,6 +35,10 @@
 
 # # Set the output clip
 # clip.set_output()
+
+##
+### RIFE VERSION ###
+##
 
 import vapoursynth as vs
 
