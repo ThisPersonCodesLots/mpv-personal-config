@@ -20,27 +20,11 @@ readahead_secs = mp.get_property_native("demuxer-readahead-secs")
 normalspeed=mp.get_property_native("speed")
 
 -- Optimization:
--- 1. Caching
--- 2. Pattern Matching
--- 3. Skipping Subtitles
--- 4. Timeouts
+-- 1. Caching - todo
+-- 2. Pattern Matching - todo
+-- 3. Skipping Subtitles - done
+-- 4. Timeouts - todo
 
--- CATCHING:
--- local cache = {}
--- 
--- function get_property_cached(name)
---     -- if the property = cached, return the cached value
---     if cache[name] then
---         return cache[name]
---     end
---     -- otherwise, fetch the property and store it in the cache
---     local value = get_property_cached(name)
---     cache[name] = value
---     return value
--- end
---     
--- local pause = get_property_cached(name)
--- ============================================
 function shouldIgnore(subtext)
     if ignorePattern and subtext and subtext~="" then
         local st = subtext:match("^%s*(.-)%s*$") -- trim whitespace
@@ -71,15 +55,35 @@ function restore_normalspeed()
     if (aid~=nil and aid~=mp.get_property("aid")) then mp.set_property("aid", aid) end
 end
 
-function check_should_speedup()
-    -- 3. Skipping Subtitles
+function skip_ignored_subtitles()
     local sub_text = mp.get_property("sub-text")
-    -- Skip all ignored subtitles at once
     while sub_text and shouldIgnore(sub_text) do
-        -- Keep fetching the next subtitle and check if it should be ignored
         mp.command("no-osd sub-step 1")
         sub_text = mp.get_property("sub-text")
     end
+end
+
+function check_next_subtitles(subdelay)
+    local nextsub = 0
+    local lookNext = true
+    local ignore = shouldIgnore(mp.get_property("sub-text"))
+    while ignore and lookNext do
+        local delay1 = mp.get_property_native("sub-delay")
+        mp.command("no-osd sub-step 1")
+        local delay2 = mp.get_property_native("sub-delay")
+        ignore = shouldIgnore(mp.get_property("sub-text"))
+        if delay1 == delay2 then
+            lookNext = false
+            nextsub = 0
+        else
+            nextsub = subdelay - delay2
+        end
+    end
+    return nextsub
+end
+
+function check_should_speedup()
+    skip_ignored_subtitles()
     
     local subdelay = mp.get_property_native("sub-delay")
     mp.command("no-osd set sub-visibility no")
@@ -87,24 +91,14 @@ function check_should_speedup()
     local mark = mp.get_property_native("time-pos")
     local nextsubdelay = mp.get_property_native("sub-delay")
     local nextsub = subdelay - nextsubdelay
+    
     if ignorePattern and nextsub > 0 then
-        local lookNext = true
-        local ignore = shouldIgnore(mp.get_property("sub-text"))
-        while ignore and lookNext do
-            local delay1 = mp.get_property_native("sub-delay")
-            mp.command("no-osd sub-step 1")
-            local delay2 = mp.get_property_native("sub-delay")
-            ignore = shouldIgnore(mp.get_property("sub-text"))
-            if delay1 == delay2 then
-                lookNext = false
-                nextsub = 0
-            else
-                nextsub = subdelay - delay2
-            end
-        end
+        nextsub = check_next_subtitles(subdelay)
     end
+    
     mp.set_property("sub-delay", subdelay)
     mp.command("no-osd set sub-visibility yes")
+    
     return nextsub, nextsub >= lookahead or nextsub == 0, mark
 end
 
@@ -150,74 +144,90 @@ end
 
 firstskip = true   --make the first skip in skip mode not have to wait for skipdelay
 delayEnd = true
-function speed_transition(_, sub)
-    if sub~=nil and shouldIgnore(sub) then
-        sub = ""
-    end;
-    if state == 0 then
-        if sub == "" then
-            last_speedup_zone_begin = speedup_zone_begin
-            nextsub, shouldspeedup, speedup_zone_begin = check_should_speedup()
-            mark = speedup_zone_begin
-            speedup_zone_end = mark + nextsub
-            if shouldspeedup or (skipmode and not firstskip) then
-                local temp_disable_skipmode = false
-                if last_speedup_zone_begin and mark < last_speedup_zone_begin then
-                    temp_disable_skipmode = true
-                end
-                if skipmode and not temp_disable_skipmode and mp.get_property("pause") == "no" then
-                    if firstskip or skipdelay == 0 then
-                        mp.commandv("no-osd", "seek", skipval(), "relative", "exact")
-                        firstskip = false
-                    elseif delayEnd then
-                        delayEnd = false
-                        mp.add_timeout(skipdelay, function()
-                            delayEnd = true
-                            if mp.get_property("pause") == "no" then
-                                nextsub, shouldskip = check_should_speedup()
-                                if shouldskip or nextsub > leadin then
-                                    local tSkip = skipval()
-                                    currentSub = mp.get_property("sub-text")
-                                    if tSkip > minSkip and (currentSub == "" or shouldIgnore(currentSub)) then
-                                        mp.commandv("no-osd", "seek", tSkip, "relative", "exact")
-                                    else 
-                                        firstskip = true
-                                    end
-                                end
-                            end
-                        end)
-                    end
-                else
-                    normalspeed = mp.get_property("speed")
-                    if mp.get_property_native("video-sync") == "audio" then
-                        mp.set_property("video-sync", "desync")
-                    end
-                    mp.set_property("speed", speedup)
-                    mp.observe_property("time-pos", "native", check_position)
-                    state = 1
-                    if dropOnAVdesync then
-                        aid = mp.get_property("aid")
-                        mp.observe_property("avsync", "native", check_audio)
-                    end
-                end
-            else
-                firstskip = true
-            end
-        end
-    elseif state == 1 then
-        if (sub ~= "" and sub ~= nil) or not mp.get_property_native("sid") then
-            mp.unobserve_property(check_position)
-            mp.unobserve_property(check_audio)
-            restore_normalspeed()
-            state = 0
-        else
-            local pos = mp.get_property_native("time-pos", 0)
-            if pos < speedup_zone_begin or pos > speedup_zone_end then
-                nextsub, _ , mark = check_should_speedup()
-            end
-        end
+
+function handle_state_zero(sub)
+    last_speedup_zone_begin = speedup_zone_begin
+    nextsub, shouldspeedup, speedup_zone_begin = check_should_speedup()
+    mark = speedup_zone_begin
+    speedup_zone_end = mark + nextsub
+    if shouldspeedup or (skipmode and not firstskip) then
+        handle_speedup()
+    else
+        firstskip = true
     end
 end
+
+function handle_speedup()
+    local temp_disable_skipmode = last_speedup_zone_begin and mark < last_speedup_zone_begin
+    if skipmode and not temp_disable_skipmode and mp.get_property("pause") == "no" then
+        handle_skipmode()
+    else
+        start_speedup()
+    end
+end
+
+function handle_skipmode()
+    if firstskip or skipdelay == 0 then
+        mp.command_native({"seek", skipval(), "relative", "exact"})
+        firstskip = false
+    elseif delayEnd then
+        delayEnd = false
+        mp.add_timeout_idle(skipdelay, function()
+            delayEnd = true
+            if mp.get_property("pause") == "no" then
+                nextsub, shouldskip = check_should_speedup()
+                if shouldskip or nextsub > leadin then
+                    local tSkip = skipval()
+                    currentSub = mp.get_property("sub-text")
+                    if tSkip > minSkip and (currentSub == "" or shouldIgnore(currentSub)) then
+                        mp.command_native({"seek", tSkip, "relative", "exact"})
+                    else 
+                        firstskip = true
+                    end
+                end
+            end
+        end)
+    end
+end
+
+function start_speedup()
+    normalspeed = mp.get_property("speed")
+    if mp.get_property_native("video-sync") == "audio" then
+        mp.set_property("video-sync", "desync")
+    end
+    mp.set_property("speed", speedup)
+    mp.observe_property("time-pos", "native", check_position)
+    state = 1
+    if dropOnAVdesync then
+        aid = mp.get_property("aid")
+        mp.observe_property("avsync", "native", check_audio)
+    end
+end
+
+function handle_state_one(sub)
+    if (sub ~= "" and sub ~= nil) or not mp.get_property_native("sid") then 
+        mp.unobserve_property(check_position)
+        mp.unobserve_property(check_audio)
+        restore_normalspeed()
+        state = 0 
+    else 
+        local pos = mp.get_property_native("time-pos", 0) 
+        if pos < speedup_zone_begin or pos > speedup_zone_end then 
+            nextsub, _ , mark = check_should_speedup() 
+        end 
+    end 
+end
+
+function speed_transition(_, sub)
+    sub = shouldIgnore(sub or "") and "" or sub
+
+    if state == 0 and sub == "" then 
+        handle_state_zero(sub)
+    elseif state == 1 then 
+        handle_state_one(sub)
+    end 
+end 
+
 
 toggle2 = false
 
