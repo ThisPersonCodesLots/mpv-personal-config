@@ -1,4 +1,4 @@
--- Source: "https://github.com/zenyd/mpv-scripts/blob/master/speed-transition.lua"
+-- Source/Reference: "https://github.com/zenyd/mpv-scripts/blob/master/speed-transition.lua"
 
 lookahead = 1         --if the next subtitle appears after this threshold then speedup
 speedup = 2.50        --the value that "speed" is set to during speedup
