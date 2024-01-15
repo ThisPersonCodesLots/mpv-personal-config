@@ -12,7 +12,7 @@ core = vs.core
 # clip = video_in.resize.Bicubic(format=vs.YUV420P8)
 
 # Set the desired output frame rate
-output_fps = 48
+output_fps = 40
 
 # Assume the input video frame rate and convert it to a high frame rate
 vden = 1000
@@ -21,8 +21,12 @@ clip = core.std.AssumeFPS(video_in, fpsnum=vfps, fpsden=vden)
 
 # Perform motion estimation using the MVTools2 plugin
 super = core.mv.Super(clip, pel=2, sharp=0, rfilter=2)
-# Modify the search parameter to change the motion estimation accuracy. I suggest to use 4 for 1080p and 8 for 4K.
+
+# Modify the search parameter to change the motion estimation accuracy
+
+# Forward motion vector
 mvfw = core.mv.Analyse(super, blksize=32, isb=False, search=3, dct=5)
+# Backward motion vector
 mvbw = core.mv.Analyse(super, blksize=32, isb=True, search=3, dct=5)
 
 # Convert the video to the desired output frame rate using motion-compensated frame interpolation

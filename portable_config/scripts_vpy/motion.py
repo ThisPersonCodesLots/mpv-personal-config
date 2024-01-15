@@ -54,7 +54,8 @@ clip = core.std.AssumeFPS(video_in, fpsnum=vfps, fpsden=vden)
 
 # Perform motion estimation using the MVTools2 plugin
 super = core.mv.Super(clip, pel=2, sharp=0, rfilter=2)
-# Modify the search parameter to change the motion estimation accuracy. I suggest to use 4 for 1080p and 8 for 4K.
+
+# Modify the search parameter to change the motion estimation accuracy.
 mvfw = core.mv.Analyse(super, blksize=32, isb=False, search=4, dct=5)
 mvbw = core.mv.Analyse(super, blksize=32, isb=True, search=4, dct=5)
 
