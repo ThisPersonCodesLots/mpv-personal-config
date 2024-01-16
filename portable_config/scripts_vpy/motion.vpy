@@ -25,9 +25,9 @@ super = core.mv.Super(clip, pel=2, sharp=0, rfilter=2)
 # Modify the search parameter to change the motion estimation accuracy
 
 # Forward motion vector
-mvfw = core.mv.Analyse(super, blksize=32, isb=False, search=3, dct=5)
+mvfw = core.mv.Analyse(super, blksize=32, isb=False, search=4, dct=5)
 # Backward motion vector
-mvbw = core.mv.Analyse(super, blksize=32, isb=True, search=3, dct=5)
+mvbw = core.mv.Analyse(super, blksize=32, isb=True, search=4, dct=5)
 
 # Convert the video to the desired output frame rate using motion-compensated frame interpolation
 dfps = int(output_fps * vden)
