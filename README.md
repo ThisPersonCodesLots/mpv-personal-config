@@ -51,7 +51,7 @@ resources (CPU, GPU, and memory). So, you need to test and make sure your system
    Again, the value is not required to be a multiple of 4, but it should ideally not exceed the number of logical
    processors (cores) available on your computer, or it may not bring much extra performance and can even slow things
    down due to overheads of task switching.
-   For concurrent-frames, a good starting point could be equal to the number of logical processors your CPU has. In your
+   For concurrent-frames, a good starting point could be equal to the number of logical processors your CPU has. In my
    case with Ryzen 7 4800HS, that would be 16 (8 cores x 2 threads per core). This setting allows the maximum
    exploitation of your CPU's multi-threading capabilities.
 
