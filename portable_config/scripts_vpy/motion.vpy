@@ -12,7 +12,7 @@ core = vs.core
 # clip = video_in.resize.Bicubic(format=vs.YUV420P8)
 
 # Set the desired output frame rate
-output_fps = 40
+output_fps = 48
 
 # Assume the input video frame rate and convert it to a high frame rate
 vden = 1000
