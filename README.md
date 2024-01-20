@@ -6,7 +6,6 @@
   Usage_, AMD Ryzen 7 4800HS, nVidia GTX 1650 mobile, 2k monitor, +120hz)
 - Make sure you have Vapoursynth and MVtools installed as portable files and/or they are in *path system*.
 
-
 ## ***Resources***
 
 - [mpv manual](https://mpv.io/manual/master/)
@@ -15,13 +14,6 @@
 - [maoiscat](https://github.com/maoiscat/mpv-mvtools-script)
 - [interpolation_test](https://github.com/haasn/interpolation-samples)
 - [Soap Opera Effect](https://www.reddit.com/r/mpv/comments/oke3aa/guide_how_to_get_motion_interpolation_soap_opera/)
-
-## ***TODO***
-
-- Fixed: ~Using vapoursynth + shaders cause losing frames.~
-- Fixed: ~Unresponsive vapoursynth as toggle option.~
-- HDR support! (Eg. OLED TV).
-- Code optimization and clean up.
 
 ### input.conf
 
@@ -55,8 +47,6 @@ resources (CPU, GPU, and memory). So, you need to test and make sure your system
    case with Ryzen 7 4800HS, that would be 16 (8 cores x 2 threads per core). This setting allows the maximum
    exploitation of your CPU's multi-threading capabilities.
 
-
-
 3. blksize: This is the size of the block the motion estimation algorithm will consider. Smaller blocks will require less
   computation, hence improve overall performance. However, using smaller blocks might reduce the accuracy of motion
   estimation as detailed motion patterns may be ignored.
@@ -64,21 +54,6 @@ resources (CPU, GPU, and memory). So, you need to test and make sure your system
 4. search: This parameter controls the motion estimation algorithm's search distance around the block. A larger search
   radius could potentially enhance motion estimation accuracy as it takes into account a wider area for prediction. But,
   it considerably increases the amount of computation, reducing execution speed.
-
-### Interpolation:
-
-- For a 72 fps video, you may want to set the _buffered-frames_ parameter to a value that is at least equal to the
-  duration of one frame (i.e., 1/72 seconds), so that there are enough buffered frames available to maintain a steady
-  processing rate. A value of 4 may be sufficient for this purpose.
-
-- As for the _concurrent-frames_ parameter, you can experiment with different values to see what works best for your
-  system and the specific video you are processing. You may want to start with a value of 8 or 16 and increase it
-  gradually to see if it improves performance.
-
-- _Keep in mind that increasing the number of concurrent frames may use more CPU and GPU resources, so make sure your
-  system can handle the load without overheating or crashing._
-
-- I recommend you to use Flowframes ( https://nmkd.itch.io/flowframes ) and take your time to use it properly.
 
 ### Shaders:
 
@@ -88,6 +63,7 @@ resources (CPU, GPU, and memory). So, you need to test and make sure your system
 
 - I recommend you to use the shaders that are in the folder "safe" and test them one by one, to see which one is the
   best for you.
+
 - Use the shaders that are in the folder "unsafe" only if you have a good GPU and
   CPU. [Anime4K](https://www.reddit.com/r/animepiracy/comments/spbyhu/evaluating_the_effectiveness_of_anime4k_for/) it's
   a bad idea to use it.
