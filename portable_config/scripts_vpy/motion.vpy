@@ -1,17 +1,20 @@
 """
 Script by @maoiscat (https://github.com/maoiscat/mpv-mvtools-script)
+fork by @ ()
 """
 
 import vapoursynth as vs
 
 core = vs.core
+# Set the desired output frame rate (eg. 48fps)
+output_fps = 48
 
-# Resize the input video to YUV420P8 format using bicubic interpolation
-# Dropped frames when used with shaders! (uncheck if CPU = strong).
+# YUV444P8 - accurate for brightness/luma
+# YUV420P8 - accurate for chroma subsampling
+# clip = video_in.resize.Bilinear(format=vs.YUV420P8)
 # clip = video_in.resize.Bicubic(format=vs.YUV420P8)
-
-# Set the desired output frame rate (eg. 50fps)
-output_fps = 50
+# clip = video_in.resize.Lanczos(format=vs.YUV444P8)
+clip = video_in.resize.Lanczos(format=vs.YUV420P8)
 
 # Assume the input video frame rate and convert it to a high frame rate
 vden = 1000
