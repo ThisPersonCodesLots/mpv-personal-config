@@ -1,6 +1,5 @@
 """
 Script by @maoiscat (https://github.com/maoiscat/mpv-mvtools-script)
-Adjust "frame" variable to your prefered frame rate or display refresh rate.
 """
 
 import vapoursynth as vs
@@ -11,7 +10,7 @@ core = vs.core
 # Dropped frames when used with shaders! (uncheck if CPU = strong).
 # clip = video_in.resize.Bicubic(format=vs.YUV420P8)
 
-# Set the desired output frame rate
+# Set the desired output frame rate (eg. 50fps)
 output_fps = 50
 
 # Assume the input video frame rate and convert it to a high frame rate
