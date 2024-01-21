@@ -1,7 +1,7 @@
 -- Source/Reference: "https://github.com/zenyd/mpv-scripts/blob/master/speed-transition.lua"
 
 lookahead = 1         --if the next subtitle appears after this threshold then speedup
-speedup = 2.50        --the value that "speed" is set to during speedup
+speedup = 2.00        --the value that "speed" is set to during speedup
 leadin = 1            --seconds to stop short of the next subtitle
 skipmode = false      --instead of speeding up playback seek to the next known subtitle
 maxSkip = 5           --max seek distance (seconds) when skipmode is enabled
@@ -36,17 +36,12 @@ function shouldIgnore(subtext)
     end
 end
 
+local aid
+
 function set_timeout()
-    local time_out
-    if mp.get_property_native("cache-size") ~= nil then
-        time_out = mp.get_property_native("cache-secs")
-    else
-        time_out = mp.get_property_native("demuxer-readahead-secs")
-    end
-    return time_out
+    return mp.get_property_native("cache-size") or mp.get_property_native("demuxer-readahead-secs")
 end
 
-local aid
 function restore_normalspeed()
     mp.set_property("speed", normalspeed)
     if mp.get_property_native("video-sync") == "desync" then
@@ -316,7 +311,30 @@ function reset_on_file_load()
     end
 end
 
-mp.add_key_binding("ctrl+j", "toggle_speedtrans", toggle)
-mp.add_key_binding("alt+j", "toggle_sub_visibility", toggle_sub_visibility)
--- mp.add_key_binding("ctrl+alt+j", "toggle_skipmode", toggle_skipmode)
-mp.register_event("file-loaded", reset_on_file_load)
+-- call the script by using keybinds:
+-- Removed standalone toggle function calls and added directly to the key binding calls
+mp.add_key_binding("ctrl+s", "toggle_speedtrans", function()
+    if not enable then
+        normalspeed = mp.get_property("speed")
+        mp.set_property("demuxer-readahead-secs",lookahead+leadin)
+        mp.observe_property("sub-text", "native", speed_transition)
+        mp.osd_message("speed-transition enabled")
+        state = 0
+        enable = not enable
+    else
+        restore_normalspeed()
+        mp.set_property("demuxer-readahead-secs",readahead_secs)
+        mp.unobserve_property(speed_transition)
+        mp.osd_message("speed-transition disabled")
+        state = 0
+        enable = not enable
+    end
+end, "toggle")
+
+mp.register_event("file-loaded", function()
+    if state == 1 then
+        mp.unobserve_property(check_position)
+        restore_normalspeed()
+        state = 0
+    end
+end)
