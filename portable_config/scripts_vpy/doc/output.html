@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Output &mdash; VapourSynth R61 documentation</title>
+  <title>Output &mdash; VapourSynth R65 documentation</title>
       <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="_static/css/custom.css" type="text/css" />
@@ -12,12 +12,11 @@
     <script src="_static/js/html5shiv.min.js"></script>
   <![endif]-->
   
-        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-        <script src="_static/jquery.js"></script>
-        <script src="_static/underscore.js"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="_static/doctools.js"></script>
-        <script src="_static/sphinx_highlight.js"></script>
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=aa146b6a"></script>
+        <script src="_static/doctools.js?v=888ff710"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/js/theme.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -30,14 +29,18 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="index.html" class="icon icon-home"> VapourSynth
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            VapourSynth
           </a>
               <div class="version">
-                R61
+                R65
               </div>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -80,7 +83,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home"></a></li>
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
       <li class="breadcrumb-item active">Output</li>
       <li class="wy-breadcrumbs-aside">
             <a href="_sources/output.rst.txt" rel="nofollow"> View page source</a>
@@ -92,11 +95,11 @@
            <div itemprop="articleBody">
              
   <section id="output">
-<h1>Output<a class="headerlink" href="#output" title="Permalink to this heading"></a></h1>
+<h1>Output<a class="headerlink" href="#output" title="Link to this heading"></a></h1>
 <section id="vspipe">
-<h2>VSPipe<a class="headerlink" href="#vspipe" title="Permalink to this heading"></a></h2>
+<h2>VSPipe<a class="headerlink" href="#vspipe" title="Link to this heading"></a></h2>
 <section id="synopsis">
-<h3>Synopsis<a class="headerlink" href="#synopsis" title="Permalink to this heading"></a></h3>
+<h3>Synopsis<a class="headerlink" href="#synopsis" title="Link to this heading"></a></h3>
 <p><strong>vspipe</strong> &lt;script&gt; &lt;outfile&gt; [options]</p>
 <p>vspipe’s main purpose is to evaluate VapourSynth scripts and output the
 frames to a file.</p>
@@ -105,7 +108,7 @@ frames to a file.</p>
 will not write the video frames anywhere.</p>
 </section>
 <section id="options">
-<h3>Options<a class="headerlink" href="#options" title="Permalink to this heading"></a></h3>
+<h3>Options<a class="headerlink" href="#options" title="Link to this heading"></a></h3>
 <dl class="simple">
 <dt><code class="docutils literal notranslate"><span class="pre">-a,</span> <span class="pre">--arg</span> <span class="pre">key=value</span></code></dt><dd><p>Argument to pass to the script environment, it a key with this name and value (str typed) will be set in the globals dict</p>
 </dd>
@@ -134,7 +137,7 @@ will not write the video frames anywhere.</p>
 </dl>
 </section>
 <section id="examples">
-<h3>Examples<a class="headerlink" href="#examples" title="Permalink to this heading"></a></h3>
+<h3>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h3>
 <dl class="simple">
 <dt>Show script info:</dt><dd><p><code class="docutils literal notranslate"><span class="pre">vspipe</span> <span class="pre">--info</span> <span class="pre">script.vpy</span> <span class="pre">-</span></code></p>
 </dd>
@@ -152,7 +155,7 @@ will not write the video frames anywhere.</p>
 </section>
 </section>
 <section id="avfs">
-<h2>AVFS<a class="headerlink" href="#avfs" title="Permalink to this heading"></a></h2>
+<h2>AVFS<a class="headerlink" href="#avfs" title="Link to this heading"></a></h2>
 <p>AV FileSystem is based on <a class="reference external" href="https://turtlewar.org/avfs/">AVFS</a> and shares most of its
 source code and functionality. This package has several uses. It can easily make
 a script file openable by any application, as it appears like a real,
@@ -163,14 +166,14 @@ This will create a virtual file in <code class="docutils literal notranslate"><s
 <p>The <em>alt_output</em> argument of <em>set_output</em> is respected and can be used to get additional compatibility
 with professional applications.</p>
 <section id="avisynth-support">
-<h3>Avisynth Support<a class="headerlink" href="#avisynth-support" title="Permalink to this heading"></a></h3>
+<h3>Avisynth Support<a class="headerlink" href="#avisynth-support" title="Link to this heading"></a></h3>
 <p>Note that this AVFS version is also compatible with Avisynth 2.6 and Avisynth+. When using Avisynth+
 higher bitdepth output is also supported. The easiest way to obtain a recent version is to extract
 <code class="docutils literal notranslate"><span class="pre">avfs.exe</span></code> from the portable VapourSynth archives.</p>
 </section>
 </section>
 <section id="vfw">
-<h2>VFW<a class="headerlink" href="#vfw" title="Permalink to this heading"></a></h2>
+<h2>VFW<a class="headerlink" href="#vfw" title="Link to this heading"></a></h2>
 <p>On windows, you can output video to VFW based programs.</p>
 <p>If you install VapourSynth by installer, the VSVFW.dll is registered already</p>
 <p>Else, you could register it manually, use register file below or use <a class="reference external" href="https://github.com/theChaosCoder/vapoursynth-portable-FATPACK/blob/master/VapourSynth64Portable/extras/enable_vfw_support.bat">theChaosCoder’s batch</a>.</p>
@@ -201,7 +204,7 @@ higher bitdepth output is also supported. The easiest way to obtain a recent ver
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2012-2022, Fredrik Mellbin.</p>
+    <p>&#169; Copyright 2012-2023, Fredrik Mellbin.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
