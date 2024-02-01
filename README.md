@@ -1,10 +1,10 @@
-## INFO
+## Preface
 
 - Please modify the file to your needs and not blindly copy-paste!
 - Take your time and read comments!
-- I tried to make it as simple as possible, using only the necessary features and for medium/low end PCs. (_20W Max Power
-  Usage_, AMD Ryzen 7 4800HS, nVidia GTX 1650 mobile, 2k monitor, +120hz)
-- Make sure you have Vapoursynth and MVtools installed as portable files and/or they are in *path system*.
+- I tried to make it as simple as possible, using only the necessary features and for medium/low end PCs. (my specs: AMD Ryzen 7 4800HS, nVidia GTX 1650 mobile, 16GB RAM);
+- Make sure you have Vapoursynth and MVtools installed as portable files and/or they are in *path system*;
+- If you have any suggestions, please let me know!
 
 ## ***Resources***
 
@@ -21,10 +21,6 @@
 - ESC - exit MPV and save current timeline
 - CTRL+number - active shaders
 - CTRL+M - motion interpolation on/off
-
-### mpv.conf
-
-- Vapoursynth as toggle option. (Can cause losing frames when toggle on/off, just skip 1-2 seconds to reset the buffer)
 
 ### Info about mvtools parameters
 
@@ -61,14 +57,9 @@ resources (CPU, GPU, and memory). So, you need to test and make sure your system
 - After some research and custom configuration of shaders, I found that the best shaders for me are
     - [Upscale+Sharpen+Thin+Dark](https://github.com/vioo-bkp/mpv-personal-config/tree/main/portable_config/shaders/safe)
 
-- I recommend you to use the shaders that are in the folder "safe" and test them one by one, to see which one is the
+- I recommend you to use the shaders that are in the folder "safe", and test them one by one to see which one is the
   best for you.
 
 - Use the shaders that are in the folder "unsafe" only if you have a good GPU and
-  CPU. [Anime4K](https://www.reddit.com/r/animepiracy/comments/spbyhu/evaluating_the_effectiveness_of_anime4k_for/) it's
-  a bad idea to use it.
-
-#### Disclaimer:
-
-- I'm not a professional, I just like to watch anime and movies with a better quality. I'm still learning about shaders
-  and how to use them properly. If you have any suggestions, please let me know!
+  CPU. [Anime4K](https://www.reddit.com/r/animepiracy/comments/spbyhu/evaluating_the_effectiveness_of_anime4k_for/) is
+  a bad practice.
