@@ -3,8 +3,13 @@
 - Please modify the file to your needs and not blindly copy-paste!
 - Take your time and read comments!
 - I tried to make it as simple as possible, using only the necessary features and for medium/low end PCs. (my specs: AMD Ryzen 7 4800HS, nVidia GTX 1650 mobile, 16GB RAM);
-- Make sure you have Vapoursynth and MVtools installed as portable files and/or they are in *path system*;
+- Make sure you have Vapoursynth and MVtools installed as ~portable files~ and/or they are in *path system*;
 - If you have any suggestions, please let me know!
+
+## Know issues
+
+- Vapoursynth is not working on Windows 11 (R45 version) - python path related;
+- tba
 
 ## ***Resources***
 
