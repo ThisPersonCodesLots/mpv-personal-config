@@ -3,11 +3,8 @@ Script by @maoiscat (https://github.com/maoiscat/mpv-mvtools-script)
 Inspiration from @ahjolinna (https://github.com/ahjolinna/mpv-conf)
 fork by @ ()
 """
-# import sys
-# import os
-# # vapoursynth is installed in the portable_config folder so link it
-# portable_config = os.path.abspath(os.path.join('portable_config', 'scripts_vpy', 'vapoursynth'))
-# sys.path.insert(0, portable_config)
+
+# vapoursynth is installed in the portable_config folder so link it
 import vapoursynth as vs
 
 # Precautionary measures
