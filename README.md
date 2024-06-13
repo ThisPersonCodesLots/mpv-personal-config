@@ -2,14 +2,14 @@
 
 - Please modify the file to your needs and not blindly copy-paste!
 - Take your time and read comments!
-- I tried to make it as simple as possible, using only the necessary features and for medium/low end PCs. (my specs: AMD Ryzen 7 4800HS, nVidia GTX 1650 mobile, 16GB RAM);
+- I tried to make it as simple as possible, using only the necessary features;
 - Make sure you have Vapoursynth and MVtools installed as ~portable files~ and/or they are in *path system*;
 - If you have any suggestions, please let me know!
 
 ## Know issues
 
 - Vapoursynth is not working on Windows 11 (R45 version) - python path related;
-- tba
+- The repo can be outdated;
 
 ## ***Resources***
 
@@ -22,10 +22,10 @@
 
 ### input.conf
 
-- SWIFT+s - change subtitles font
+- SHIFT+s - change subtitles font
 - ESC - exit MPV and save current timeline
-- CTRL+number - active shaders
-- CTRL+M - motion interpolation on/off
+- CTRL+number - enable shaders
+- CTRL+M or CTRL+N - motion interpolation
 
 ### Info about mvtools parameters
 
@@ -33,14 +33,14 @@ While choosing the values, the primary thing to consider is the hardware capabil
 demands of the video processing task you're performing. Higher values can result in increased utilization of system
 resources (CPU, GPU, and memory). So, you need to test and make sure your system can handle the load.
 
-1. buffered-frames: Specifies the number of frames to be buffered before being processed. This value is not required to
+1. `buffered-frames`: Specifies the number of frames to be buffered before being processed. This value is not required to
    be a multiple of 4. You can choose any positive integer that suits your needs and hardware. Remember that a larger
    buffer size might increase memory usage but potentially allows for smoother playback.
    For buffered-frames, the default value is typically around 4-8. This should be more than enough for most use cases.
    Increasing this value might help if you're experiencing stuttering or slower frame rates, but it will also consume
    more RAM. If you're not having any playback issues, leaving it at the default is generally recommended.
 
-2. concurrent-frames: This parameter sets the concurrency, or the number of frames being processed at the same time.
+2. `concurrent-frames`: This parameter sets the concurrency, or the number of frames being processed at the same time.
    Again, the value is not required to be a multiple of 4, but it should ideally not exceed the number of logical
    processors (cores) available on your computer, or it may not bring much extra performance and can even slow things
    down due to overheads of task switching.
@@ -48,11 +48,11 @@ resources (CPU, GPU, and memory). So, you need to test and make sure your system
    case with Ryzen 7 4800HS, that would be 16 (8 cores x 2 threads per core). This setting allows the maximum
    exploitation of your CPU's multi-threading capabilities.
 
-3. blksize: This is the size of the block the motion estimation algorithm will consider. Smaller blocks will require less
+3. `blksize`: This is the size of the block the motion estimation algorithm will consider. Smaller blocks will require less
   computation, hence improve overall performance. However, using smaller blocks might reduce the accuracy of motion
   estimation as detailed motion patterns may be ignored.
 
-4. search: This parameter controls the motion estimation algorithm's search distance around the block. A larger search
+4. `search`: This parameter controls the motion estimation algorithm's search distance around the block. A larger search
   radius could potentially enhance motion estimation accuracy as it takes into account a wider area for prediction. But,
   it considerably increases the amount of computation, reducing execution speed.
 

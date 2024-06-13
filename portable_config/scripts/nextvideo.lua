@@ -27,7 +27,7 @@ local options = require 'mp.options'
 local utils = require 'mp.utils'
 
 o = {
-    disabled = false,
+    disabled = true,
     images = true,
     videos = true,
     audio = true,
