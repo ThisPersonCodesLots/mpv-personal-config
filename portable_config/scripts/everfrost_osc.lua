@@ -1166,6 +1166,13 @@ layouts["default"] = function ()
         p = 40,     -- padding
     }
 
+    -- local osc_geo = {
+    --     w = display_w * 0.6,  -- 60% of window width
+    --     h = display_h * 0.1,  -- 10% of window height
+    --     r = 4,
+    --     p = 40,
+    -- }
+
     -- make sure the OSC actually fits into the video
     if (osc_param.playresx < (osc_geo.w + (2 * osc_geo.p))) then
         osc_param.playresy = (osc_geo.w+(2*osc_geo.p))/osc_param.display_aspect
@@ -1382,7 +1389,7 @@ function osc_init()
     msg.debug("osc_init")
 
     -- set canvas resolution according to display aspect and scaling setting
-    local baseResY = 720
+    -- local baseResY = 720
     local display_w, display_h, display_aspect = mp.get_osd_size()
     local scale = 1
 
@@ -1400,6 +1407,7 @@ function osc_init()
         osc_param.unscaled_y = display_h
     end
     osc_param.playresy = osc_param.unscaled_y / scale
+    
     if (display_aspect > 0) then
         osc_param.display_aspect = display_aspect
     end
