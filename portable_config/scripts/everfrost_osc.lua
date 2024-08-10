@@ -28,7 +28,7 @@ local user_opts = {
     hidetimeout = 500,          -- duration in ms until the OSC hides if no
                                 -- mouse movement. enforced non-negative for the
                                 -- user, but internally negative is "always-on".
-    fadeduration = 200,         -- duration of fade out in ms, 0 = no fade
+    fadeduration = 2000,         -- duration of fade out in ms, 0 = no fade
     deadzonesize = 0.9,         -- size of deadzone
     minmousemove = 0,           -- minimum amount of pixels the mouse has to
                                 -- move between ticks to make the OSC show up
